@@ -1,0 +1,45 @@
+{
+  "Users": {
+    "user1": {
+      "name": "Anuraag Yachamaneni",
+      "email": "hello@anuraag.me",
+      "password": "lkaskdfjalfa",
+      "authtoken": "n4k31jn34n1",
+      "height": "185",
+      "weight": "170",
+      "ghosts": {
+        "ghost1": {
+          "name": "My first ghost",
+          "timestamp": "2018-01-01 15:00:41 -0500",
+          "event_id": "event1",
+          "data_points": {
+            "point1": {
+              "time_elapsed": "15",
+              "distance_traveled": "10",
+              "x_coodinate": "41.40338",
+              "y_coordinate": "2.17403"
+            }
+          }
+        }
+      },
+      "created_at": "2018-01-01 15:00:41 -0500",
+      "updated_at": "2018-01-01 15:00:41 -0500",
+    }
+  },
+
+  "Events": {
+    "event1": {
+      "name": "NYC Marathon",
+      "ghosts": {
+        "ghost1": {
+          "runner": "user1",
+          "ghost": "ghost1"
+        }
+      },
+      "winners": {
+        "first": "user1"
+      }
+    }
+  }
+
+}
