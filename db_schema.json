@@ -31,7 +31,7 @@
     "event1": {
       "name": "NYC Marathon",
       "ghosts": {
-        "ghost1": {
+        "nycghost1": {
           "runner": "user1",
           "ghost": "ghost1"
         }
