@@ -8,5 +8,9 @@ module.exports = mongoose.model('User', new Schema({
   age: Number,
   height: Number,
   weight: Number,
-  timestamps: true 
+}, { 
+  timestamps: { 
+    created_at: 'created_at', 
+    updated_at: 'updated_at'
+  }
 }));
