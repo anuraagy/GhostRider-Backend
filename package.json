@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/anuraagy/GhostRider-Backend/issues"
   },
-  "homepage": "https://github.com/anuraagy/GhostRider-Backend#readme"
+  "homepage": "https://github.com/anuraagy/GhostRider-Backend#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "jsonwebtoken": "^8.1.0",
+    "mongoose": "^5.0.0-rc0",
+    "morgan": "^1.9.0"
+  }
 }
