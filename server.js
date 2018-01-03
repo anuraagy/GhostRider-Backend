@@ -31,18 +31,22 @@ app.get('/', function(req, res) {
 app.get('/setup', function(req, res) {
 
   // create a sample user
-  var user = new User({ 
-    name: 'Anuraag Yachamaneni', 
-    password: 'password'
+  bcrypt.hash('password', saltRounds).then(function(hash) {
+    var user = new User({ 
+      name: 'Anuraag Yachamaneni', 
+      password: hash
+    });
+    
+    user.save(function(err) {
+      if (err) throw err;
+
+      console.log('User saved successfully');
+      res.json({ success: true });
+    });
   });
 
   // save the sample user
-  user.save(function(err) {
-    if (err) throw err;
-
-    console.log('User saved successfully');
-    res.json({ success: true });
-  });
+  
 });
 
 //API Routes
