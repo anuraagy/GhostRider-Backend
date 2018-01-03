@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-module.exports = mongoose.model('User', new Schema({
+var User = mongoose.model('User', new Schema({
   name: String,
   email: String,
   password: String,
@@ -14,3 +14,7 @@ module.exports = mongoose.model('User', new Schema({
     updated_at: 'updated_at'
   }
 }));
+
+
+
+module.exports = User
