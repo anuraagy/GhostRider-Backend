@@ -31,7 +31,7 @@ app.get('/', function(req, res) {
 app.get('/setup', function(req, res) {
 
   // create a sample user
-  bcrypt.hash('password', saltRounds).then(function(hash) {
+  bcrypt.hash('password', config.saltRounds).then(function(hash) {
     var user = new User({ 
       name: 'Anuraag Yachamaneni', 
       password: hash
@@ -53,7 +53,7 @@ app.get('/setup', function(req, res) {
 var apiRoutes = express.Router(); 
 
 apiRoutes.post('/authenticate', function(req, res) {
-
+  // res.json({hello: 'hello'})
   // find the user
   User.findOne({
     name: req.body.name
@@ -61,34 +61,31 @@ apiRoutes.post('/authenticate', function(req, res) {
 
     if (err) throw err;
 
+    
     if (!user) {
       res.json({ success: false, message: 'Authentication failed. User not found.' });
     } else if (user) {
 
       // check if password matches
-      if (user.password != req.body.password) {
-        res.json({ success: false, message: 'Authentication failed. Wrong password.' });
-      } else {
+      bcrypt.compare(req.body.password, user.password).then(function(found) {
+        console.log(found)
+        if(found == false) {
+          res.json({ success: false, message: 'Authentication failed. Wrong password.' });
+        } else {
+          const payload = {};
+          var token = jwt.sign(payload, app.get('superSecret'), {
+            expiresIn : '24 hours' // expires in 24 hours
+          });
 
-        // if user is found and password is right
-        // create a token with only our given payload
-    // we don't want to pass in the entire user since that has the password
-    const payload = {
-      admin: user.admin 
-    };
-        var token = jwt.sign(payload, app.get('superSecret'), {
-          expiresIn : '24 hours' // expires in 24 hours
-        });
-
-        // return the information including token as JSON
-        res.json({
-          success: true,
-          message: 'Enjoy your token!',
-          token: token
-        });
-      }   
-
-    }
+          // return the information including token as JSON
+          res.json({
+            success: true,
+            message: 'Enjoy your token!',
+            token: token
+          });
+        }
+      });
+    }   
 
   });
 });
