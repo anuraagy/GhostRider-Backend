@@ -10,12 +10,12 @@ Rails.application.routes.draw do
       resources :events,  :except => [:new, :show, :edit] do 
         get 'search', :on => :collection
         
-        get 'start',  :on => :member
-        get 'end',    :on => :member
+        post 'start',  :on => :member
+        post 'end',    :on => :member
 
-        get 'add_participant',    :on => :member
-        get 'remove_participant', :on => :member
-        get 'queue_participant',  :on => :member
+        post 'add_participant',    :on => :member
+        post 'remove_participant', :on => :member
+        post 'queue_participant',  :on => :member
       end
 
       resources :users,  :only => [] do
