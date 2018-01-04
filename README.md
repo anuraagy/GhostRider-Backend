@@ -1,58 +1,24 @@
-# GhostRider - Backend
-Backend for the Ghost Rider Application
-Written in NodeJS and Socket.io
+# README
 
-## TODO
-1. Build an authentication server with JWT(JSON Web Tokens)
-2. Setup Socket.io rooms
-3. Build API for creating/updating/editing/deleting ghosts
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-## Tentative Routes
+Things you may want to cover:
 
-* Controllers and Actions
-    * API
-        * Users
-            * Create
-                * /api/users/create
-            * Get
-                * /api/users/get
-            * Search
-                * /api/users/search
-            * Authenticate
-                * /api/users/authenticate
-            * Update
-                * /api/users/update
-            * Delete
-                * /api/user/delete
-        * Ghosts
-            * Create
-                * /api/ghosts/create
-            * Get
-                * /api/ghosts/get
-            * Search
-                * /api/ghosts/search
-            * Update
-                * /api/ghosts/update
-            * Delete
-                * /api/ghosts/delete
-        * Events
-            * Create
-                * /api/events/create
-            * Get
-                * /api/events/get
-            * Search
-                * /api/events/search
-            * Add Participant
-                * /api/events/add_participant
-            * Remove Participant
-                * /api/events/remove_participant
-            * Start Event
-                * /api/events/start
-            * End Event
-                * /api/events/end
-            * Participant is ready
-                * /api/events/queue_participant
-            * Update
-                * /api/events/update
-            * Delete
-                * /api/events/delete
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
