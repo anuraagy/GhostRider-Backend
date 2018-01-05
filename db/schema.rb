@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20180104034519) do
     t.string "name", null: false
     t.string "winner"
     t.string "status"
+    t.integer "socket"
     t.integer "creator_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -27,10 +28,10 @@ ActiveRecord::Schema.define(version: 20180104034519) do
   create_table "ghosts", force: :cascade do |t|
     t.string "name", null: false
     t.integer "distance"
-    t.string "data"
     t.string "status"
     t.integer "time"
     t.integer "calories_burned"
+    t.json "data"
     t.bigint "users_id"
     t.bigint "events_id"
     t.datetime "created_at", null: false

@@ -1,4 +1,5 @@
 class Api::V1::GhostsController < Api::V1::BaseController
+  
   def index
     ghosts = Ghost.where(ghost_params)
     render :json => ghosts.as_json
