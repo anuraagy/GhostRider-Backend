@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180104034519) do
+ActiveRecord::Schema.define(version: 20180104033617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,17 +27,17 @@ ActiveRecord::Schema.define(version: 20180104034519) do
 
   create_table "ghosts", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "distance"
     t.string "status"
-    t.integer "time"
+    t.decimal "distance"
+    t.decimal "time"
     t.integer "calories_burned"
     t.json "data"
-    t.bigint "users_id"
-    t.bigint "events_id"
+    t.bigint "user_id"
+    t.bigint "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["events_id"], name: "index_ghosts_on_events_id"
-    t.index ["users_id"], name: "index_ghosts_on_users_id"
+    t.index ["event_id"], name: "index_ghosts_on_event_id"
+    t.index ["user_id"], name: "index_ghosts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -60,13 +60,6 @@ ActiveRecord::Schema.define(version: 20180104034519) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  create_table "users_events", id: false, force: :cascade do |t|
-    t.bigint "users_id"
-    t.bigint "events_id"
-    t.index ["events_id"], name: "index_users_events_on_events_id"
-    t.index ["users_id"], name: "index_users_events_on_users_id"
   end
 
 end

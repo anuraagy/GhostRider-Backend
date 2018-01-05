@@ -62,11 +62,25 @@ class Api::V1::EventsController < Api::V1::BaseController
   end
 
   def start_event
+    event = Event.find(params[:id])
+    event.status = "in_progress"
 
+    if event.save
+      render :json => { :success => true }
+    else
+      render :json => { :success => false, :message => event.errors.as_json}
+    end
   end
 
   def end_event
+    event = Event.find(params[:id])
+    event.status = "complete"
 
+    if event.save
+      render :json => { :success => true }
+    else
+      render :json => { :success => false, :message => event.errors.as_json}
+    end
   end
 
   private

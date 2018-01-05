@@ -13,6 +13,7 @@ gem 'config'
 gem "rspec"
 gem 'rspec-rails'
 gem "factory_girl_rails"
+gem 'faker'
 
 gem 'sass-rails'
 gem 'uglifier'

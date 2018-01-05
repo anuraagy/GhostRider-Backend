@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_and_belongs_to_many :events
   has_many :ghosts
+  has_many :events, :through => :ghosts
   
   validates :name,   :presence => true
   validates :age,    :presence => true
