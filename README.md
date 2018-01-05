@@ -3,6 +3,5 @@ Backend for the Ghost Rider Application
 Written in Ruby on Rails
 
 ## TODO
-1. Build an authentication server
-2. Setup WebSocket Rooms
-3. Build API for creating/updating/editing/deleting ghosts
+1. Shift the simple token auth to an OAuth based system with refresh tokens and such
+2. Write tests for the API
