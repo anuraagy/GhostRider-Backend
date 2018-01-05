@@ -1,4 +1,5 @@
 class Api::V1::GhostsController < Api::V1::BaseController
+  
   def index
     ghosts = Ghost.where(ghost_params)
     render :json => ghosts.as_json
@@ -27,7 +28,7 @@ class Api::V1::GhostsController < Api::V1::BaseController
   def destroy
     ghost = Ghost.find(params[:id])
 
-    if ghost.destroy
+    if ghost.user.token == params[:token] && ghost.destroy
       render :json => {:success => true}
     else
       render :json => {:success => false}

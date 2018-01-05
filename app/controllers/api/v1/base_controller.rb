@@ -8,7 +8,7 @@ class Api::V1::BaseController < ApplicationController
     user = User.find_by(:token => params[:token])
     
     if user.nil?
-      render :json => "401 Unauthorized"
+      render :json => { :message => "Missing access token"}
     end
   end
 end

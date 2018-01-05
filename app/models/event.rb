@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
-  has_and_belongs_to_many :users
   has_many :ghosts
+  has_many :participants, :through => :ghosts, :source => :user
 
   def creator
     User.find(creator_id)
