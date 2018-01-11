@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   # devise_for :users
   namespace :api do
     namespace :v1 do
-      resources :ghosts,  :except => [:new, :show, :edit]
+      resources :ghosts,  :except => [:new, :show, :edit] do 
+        get 'search', :on => :collection
+      end
 
       resources :events,  :except => [:new, :show, :edit] do         
         post 'start_event',        :on => :member

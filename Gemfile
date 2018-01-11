@@ -12,7 +12,7 @@ gem 'devise'
 gem 'config'
 gem "rspec"
 gem 'rspec-rails'
-gem "factory_girl_rails"
+gem "factory_bot"
 gem 'faker'
 
 gem 'sass-rails'
@@ -21,6 +21,7 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder'
+gem 'textacular'
 gem 'pry'
 
 group :development, :test do

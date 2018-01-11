@@ -5,6 +5,11 @@ class Api::V1::GhostsController < Api::V1::BaseController
     render :json => ghosts.as_json
   end
 
+  def search
+    ghosts = Ghost.fuzzy_search(search_params)
+    render :json => ghosts.as_json
+  end
+
   def create
     ghost = Ghost.new(ghost_params)
 
@@ -39,5 +44,9 @@ class Api::V1::GhostsController < Api::V1::BaseController
 
   def ghost_params
     params.permit(:id, :name, :distance, :data, :status, :time, :calories_burned, :user_id, :event_id)
+  end
+
+  def search_params
+    params.permit(:query)
   end
 end
