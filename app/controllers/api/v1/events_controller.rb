@@ -5,6 +5,11 @@ class Api::V1::EventsController < Api::V1::BaseController
     render :json => events.as_json
   end
 
+  def search
+    events = Event.fuzzy_search(params[:query]).reorder("#{params[:order]} #{params[:dir]}")
+    render :json => events.as_json
+  end
+
   def create
     event = Event.new(event_params)
 

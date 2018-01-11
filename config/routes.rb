@@ -12,6 +12,8 @@ Rails.application.routes.draw do
         post 'end_event',          :on => :member
         post 'add_participant',    :on => :member
         post 'remove_participant', :on => :member
+
+        get 'search', :on => :collection
       end
 
       resources :users,  :only => [] do
