@@ -2,7 +2,11 @@
 Backend for the Ghost Rider Application
 Written in Ruby on Rails
 
-## TODO
-1. Shift the simple token auth to an OAuth based system with refresh tokens and such
-2. Write tests for the API
-3. Figure out how I want to end events.
+## Tickets (TODO)
+1. GHOST-2: Add searching and sorting functionality to ghost API
+2. USER-1: Create Achievements API
+3. USER-2: Integrate social features 
+4. AUTH-2: Shift authentication to more secure format
+5. AUTH-3: Add email/phonenumber confirmation
+6. AUTH-4: Integrate facebook authentication
+
