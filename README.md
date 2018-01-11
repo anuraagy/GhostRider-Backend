@@ -3,7 +3,7 @@ Backend for the Ghost Rider Application
 Written in Ruby on Rails
 
 ## Tickets (TODO)
-1. GHOST-2: Add searching and sorting functionality to ghost API
+1. ~~GHOST-2: Add searching and sorting functionality to ghost API~~
 2. USER-1: Create Achievements API
 3. USER-2: Integrate social features 
 4. AUTH-2: Shift authentication to more secure format
