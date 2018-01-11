@@ -7,6 +7,8 @@ Rails.application.routes.draw do
         get 'search', :on => :collection
       end
 
+      resources :achievements, :only => [:index]
+
       resources :events,  :except => [:new, :show, :edit] do         
         post 'start_event',        :on => :member
         post 'end_event',          :on => :member
@@ -19,6 +21,8 @@ Rails.application.routes.draw do
       resources :users,  :only => [] do
         post 'authenticate', :to => "authenticate", :on => :collection
         post 'register',     :to => "create",  :on => :collection
+
+        resources :achievements, :only => [:create, :index]
       end
     end
   end

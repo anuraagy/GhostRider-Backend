@@ -17,7 +17,26 @@
     :weight   => Faker::Number.between(90,225).to_i
   }
 
-  User.create(user_params)
+  User.create!(user_params)
+end
+
+20.times do |index|
+  achievement_params = {
+    :name => Faker::Lorem.word,
+    :description => Faker::Lorem.sentence,
+    :image_url => "https://iwellnesslife.com/wp-content/uploads/2017/07/goal.jpg"
+  }
+
+  Achievement.create!(achievement_params)
+end
+
+100.times do |index|
+  achievement_record_params = {
+    :user_id => Faker::Number.between(1,49).to_i,
+    :achievement_id => Faker::Number.between(1,19).to_i
+  }
+
+  AchievementRecord.create(achievement_record_params)
 end
 
 50.times do |index|
