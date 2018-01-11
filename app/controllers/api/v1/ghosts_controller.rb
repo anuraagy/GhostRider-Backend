@@ -6,7 +6,7 @@ class Api::V1::GhostsController < Api::V1::BaseController
   end
 
   def search
-    ghosts = Ghost.fuzzy_search(search_params)
+    ghosts = Ghost.fuzzy_search(params[:query]).reorder("#{params[:order]} #{params[:dir]}")
     render :json => ghosts.as_json
   end
 
@@ -47,6 +47,6 @@ class Api::V1::GhostsController < Api::V1::BaseController
   end
 
   def search_params
-    params.permit(:query)
+    params.permit(:query, :order, :dir)
   end
 end
