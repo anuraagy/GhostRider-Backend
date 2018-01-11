@@ -10,11 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180111045850) do
+ActiveRecord::Schema.define(version: 20180111064655) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "pg_trgm"
+
+  create_table "achievement_records", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "achievement_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["achievement_id"], name: "index_achievement_records_on_achievement_id"
+    t.index ["user_id"], name: "index_achievement_records_on_user_id"
+  end
+
+  create_table "achievements", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description", null: false
+    t.string "image_url", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "events", force: :cascade do |t|
     t.string "name", null: false
