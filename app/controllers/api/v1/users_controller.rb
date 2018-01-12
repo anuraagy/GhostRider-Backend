@@ -3,7 +3,8 @@ class Api::V1::UsersController < Api::V1::BaseController
 
   def register
     user = User.new(user_params)
-    user.token = SecureRandom.urlsafe_bas64(24)
+
+    user.token = SecureRandom.urlsafe_base64(24)
     user.token_expiry = Time.now + 30.days
 
     if user.save
@@ -21,11 +22,10 @@ class Api::V1::UsersController < Api::V1::BaseController
 
     if !user.nil?
       if user.valid_password?(password)
-        if user.token_expiry < Time.now
-          user.token = SecureRandom.urlsafe_base64(24)
-          user.token_expiry = Time.now + 30.days
-          user.save
-        end
+        user.token = SecureRandom.urlsafe_base64(24)
+        user.token_expiry = Time.now + 30.days
+        user.save
+
         render :json => { :success => true, :email => user.email, :token => user.token }
       else
         render :json => { :success => false, :message => "Invalid email or password submitted" }

@@ -23,7 +23,7 @@ class Api::V1::EventsController < Api::V1::BaseController
   def update
     event = Event.find(params[:id])
 
-    if event.update(event_params)
+    if event.user.token == params[:token] && event.update(event_params)
       render :json => event.as_json
     else
       render :json => event.errors.as_json

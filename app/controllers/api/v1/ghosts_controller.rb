@@ -23,7 +23,7 @@ class Api::V1::GhostsController < Api::V1::BaseController
   def update
     ghost = Ghost.find(params[:id])
 
-    if ghost.update(ghost_params)
+    if ghost.user.token == params[:token] && ghost.update(ghost_params)
       render :json => ghost.as_json
     else
       render :json => ghost.errors.as_json
