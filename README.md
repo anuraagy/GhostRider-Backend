@@ -8,5 +8,7 @@ Written in Ruby on Rails
 3. ~~USER-2: Integrate social features~~
 4. ~~AUTH-2: Shift authentication to more secure format and force users to access stuff based on token, i.e. they can only access their own achievemnts, etc.~~
 5. AUTH-3: Add email/phonenumber confirmation
-6. AUTH-4: Integrate facebook authentication
+6. MISC-1: Add pagination to API and rename Achievements
+7. AUTH-4: Integrate facebook authentication
+
 
