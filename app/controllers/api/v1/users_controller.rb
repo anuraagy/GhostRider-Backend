@@ -1,5 +1,5 @@
 class Api::V1::UsersController < Api::V1::BaseController
-  skip_before_action :authenticate_token?
+  skip_before_action :authenticate_token?, :only => [:register, :authenticate]
 
   def register
     user = User.new(user_params)
@@ -49,13 +49,13 @@ class Api::V1::UsersController < Api::V1::BaseController
   def friends
     user = User.find(params[:id])
 
-    render :json => user.friends.as_json
+    render :json => user.friends.select(:id, :name).as_json
   end
 
   def followers
     user = User.find(params[:id])
 
-    render :json => user.followers.as_json
+    render :json => user.followers.select(:id, :name).as_json
   end
 
   private

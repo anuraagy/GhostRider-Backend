@@ -20,6 +20,15 @@
   User.create!(user_params)
 end
 
+100.times do |index|
+  relationship_params = {
+    :user_id => Faker::Number.between(1,49).to_i,
+    :friend_id => Faker::Number.between(1,49).to_i
+  }
+
+  Relationship.create(relationship_params)
+end
+
 20.times do |index|
   achievement_params = {
     :name => Faker::Lorem.word,
