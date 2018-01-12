@@ -20,8 +20,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.inet     :last_sign_in_ip
       
       ## Custom Auth
-      t.string :token, null: false
-
+      t.string   :token,        null: false
+      t.datetime :token_expiry, null: false
+      
       ## Custom Attributes
       t.string  :name,    null: false
       t.integer :age,     null: false

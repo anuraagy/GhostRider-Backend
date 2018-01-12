@@ -1,4 +1,5 @@
 class Api::V1::GhostsController < Api::V1::BaseController
+  before_action :verify_user, :except => [:index, :search]
   
   def index
     ghosts = Ghost.where(ghost_params)
@@ -23,7 +24,7 @@ class Api::V1::GhostsController < Api::V1::BaseController
   def update
     ghost = Ghost.find(params[:id])
 
-    if ghost.update(ghost_params)
+    if ghost.user.token == params[:token] && ghost.update(ghost_params)
       render :json => ghost.as_json
     else
       render :json => ghost.errors.as_json
@@ -48,5 +49,13 @@ class Api::V1::GhostsController < Api::V1::BaseController
 
   def search_params
     params.permit(:query, :order, :dir)
+  end
+
+  def verify_user
+    user = User.find(params[:user_id])
+
+    if user.token != params[:token]
+      render :json => { :success => false, :message => "You do not have access to this data" }
+    end
   end
 end

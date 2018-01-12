@@ -14,6 +14,7 @@ gem "rspec"
 gem 'rspec-rails'
 gem "factory_bot"
 gem 'faker'
+gem 'bcrypt'
 
 gem 'sass-rails'
 gem 'uglifier'
