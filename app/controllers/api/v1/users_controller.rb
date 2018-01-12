@@ -1,5 +1,6 @@
 class Api::V1::UsersController < Api::V1::BaseController
   skip_before_action :authenticate_token?, :only => [:register, :authenticate]
+  before_action :verify_user, :only => [:feed, :add_friend, :remove_friend, :like_post, :unlike_post]
 
   def register
     user = User.new(user_params)
@@ -99,5 +100,13 @@ class Api::V1::UsersController < Api::V1::BaseController
 
   def user_sign_in_params
     params.permit(:email, :password)
+  end
+
+  def verify_user
+    user = User.find(params[:id])
+
+    if user.token != params[:token]
+      render :json => { :success => false, :message => "You do not have access to this data" }
+    end
   end
 end

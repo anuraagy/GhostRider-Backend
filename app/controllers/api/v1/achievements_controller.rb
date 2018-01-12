@@ -1,5 +1,6 @@
 class Api::V1::AchievementsController < Api::V1::BaseController
-  
+  before_action :verify_user
+
   def index
     if params[:user_id] == nil
       render :json => Achievement.all
@@ -23,5 +24,13 @@ class Api::V1::AchievementsController < Api::V1::BaseController
 
   def achievement_record_params
     params.permit(:achievement_id)
+  end
+
+  def verify_user
+    user = User.find(params[:user_id])
+
+    if user.token != params[:token]
+      render :json => { :success => false, :message => "You do not have access to this data" }
+    end
   end
 end
