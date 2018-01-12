@@ -8,7 +8,9 @@ class Api::V1::BaseController < ApplicationController
     user = User.find_by(:token => params[:token])
     
     if user.nil?
-      render :json => { :message => "Missing access token"}
+      render :json => { :message => "Invalid access token"}
+    elsif user.token_expiry < Time.now
+      render :json => { :message => "This is an expired token"}
     end
   end
 end
