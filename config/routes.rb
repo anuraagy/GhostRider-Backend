@@ -20,9 +20,19 @@ Rails.application.routes.draw do
 
       resources :users,  :only => [] do
         post 'authenticate', :to => "authenticate", :on => :collection
-        post 'register',     :to => "create",  :on => :collection
+        post 'register',     :to => "create",       :on => :collection
 
-        resources :achievements, :only => [:create, :index]
+        get 'feed',      :on => :member
+        get 'friends',   :on => :member
+        get 'followers', :on => :member
+
+        post 'add_friend',    :on => :member
+        post 'remove_friend', :on => :member
+        post 'like_post',     :on => :member
+        post 'unlike_post',   :on => :member
+
+        resources :posts,        :only => [:index, :create]
+        resources :achievements, :only => [:index, :create]
       end
     end
   end

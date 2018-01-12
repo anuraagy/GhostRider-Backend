@@ -9,7 +9,8 @@ class Api::V1::AchievementsController < Api::V1::BaseController
   end
 
   def create
-    achievement_record = Achievement.new(achievement_record_params)
+    user = User.find(params[:user_id])
+    achievement_record = user.achievements_records.build(achievement_record_params)
 
     if achievement_record.save
       render :json => { :success => true }
@@ -21,6 +22,6 @@ class Api::V1::AchievementsController < Api::V1::BaseController
   private
 
   def achievement_record_params
-    params.permit(:achievement_id, :user_id)
+    params.permit(:achievement_id)
   end
 end

@@ -20,7 +20,17 @@
   User.create!(user_params)
 end
 
-20.times do |index|
+100.times do |index|
+  relationship_params = {
+    :user_id => Faker::Number.between(1,49).to_i,
+    :friend_id => Faker::Number.between(1,49).to_i
+  }
+
+  Relationship.create(relationship_params)
+end
+
+
+100.times do |index|
   achievement_params = {
     :name => Faker::Lorem.word,
     :description => Faker::Lorem.sentence,
@@ -30,7 +40,7 @@ end
   Achievement.create!(achievement_params)
 end
 
-100.times do |index|
+20.times do |index|
   achievement_record_params = {
     :user_id => Faker::Number.between(1,49).to_i,
     :achievement_id => Faker::Number.between(1,19).to_i
@@ -64,6 +74,28 @@ end
     
     Ghost.create!(ghost_params)
   end
+end
+
+100.times do |index|
+  achievement_post_params = {
+    :title => Faker::Lorem.sentence,
+    :description => Faker::Lorem.sentence,
+    :postable_id => Faker::Number.between(1,20).to_i,
+    :postable_type => "Achievement",
+    :user_id => Faker::Number.between(1,49).to_i
+  }
+
+  Post.create!(achievement_post_params)
+
+  ghost_post_params = {
+    :title => Faker::Lorem.sentence,
+    :description => Faker::Lorem.sentence,
+    :postable_id => Faker::Number.between(1,100).to_i,
+    :postable_type => "Ghost",
+    :user_id => Faker::Number.between(1,49).to_i
+  }
+
+  Post.create!(ghost_post_params)
 end
 
 
