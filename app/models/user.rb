@@ -15,7 +15,10 @@ class User < ApplicationRecord
 
   has_many :friends,   :through => :relationships
   has_many :followers, :through => :inverse_relationships, :source => :user
-  
+
+  has_many :posts
+  has_many :friends_posts, :through => :friends, :source => :posts
+
   validates :name,   :presence => true
   validates :age,    :presence => true
   validates :weight, :presence => true 
