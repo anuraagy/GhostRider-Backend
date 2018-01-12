@@ -22,6 +22,13 @@ Rails.application.routes.draw do
         post 'authenticate', :to => "authenticate", :on => :collection
         post 'register',     :to => "create",  :on => :collection
 
+        get 'feed',      :on => :member
+        get 'friends',   :on => :member
+        get 'followers', :on => :member
+
+        post 'add_friend',    :on => :member
+        post 'remove_friend', :on => :member
+
         resources :achievements, :only => [:create, :index]
       end
     end
