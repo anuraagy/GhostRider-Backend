@@ -58,6 +58,34 @@ class Api::V1::UsersController < Api::V1::BaseController
     render :json => user.followers.select(:id, :name).as_json
   end
 
+  def feed
+    user = User.find(params[:id])
+
+    render :json => user.friends_posts.order('created_at ASC').as_json
+  end
+
+  def like_post
+    post = Post.find(params[:post_id])
+    post.likes += 1
+
+    if post.save
+      render :json => { :success => true }
+    else
+      render :json => { :success => false } 
+    end
+  end
+
+  def unlike_post
+    post = Post.find(params[:post_id])
+    post.likes -= 1
+
+    if post.save
+      render :json => { :success => true }
+    else
+      render :json => { :success => false } 
+    end  
+  end
+
   private
   def user_params
     params.permit(:name, :email, :password, :age, :weight, :height )
