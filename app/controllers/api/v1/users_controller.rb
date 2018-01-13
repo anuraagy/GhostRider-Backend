@@ -1,5 +1,5 @@
 class Api::V1::UsersController < Api::V1::BaseController
-  skip_before_action :authenticate_token?, :only => [:register, :authenticate]
+  skip_before_action :authenticate_token?, :only => [:register, :authenticate, :verify_email]
   before_action :verify_user, :only => [:feed, :add_friend, :remove_friend, :like_post, :unlike_post]
 
   def register
@@ -8,7 +8,11 @@ class Api::V1::UsersController < Api::V1::BaseController
     user.token = SecureRandom.urlsafe_base64(24)
     user.token_expiry = Time.now + 30.days
 
+    user.verification_token = rand(99999)
+    user.verified = false
+
     if user.save
+      send_verification_email(user)
       render :json => { :success => true, :message => user.as_json }
     else
       render :json => { :success => false, :message => user.errors.as_json }
@@ -23,16 +27,32 @@ class Api::V1::UsersController < Api::V1::BaseController
 
     if !user.nil?
       if user.valid_password?(password)
-        user.token = SecureRandom.urlsafe_base64(24)
-        user.token_expiry = Time.now + 30.days
-        user.save
+        if user.verified
+          user.token = SecureRandom.urlsafe_base64(24)
+          user.token_expiry = Time.now + 30.days
+          user.save
 
-        render :json => { :success => true, :email => user.email, :token => user.token }
+          render :json => { :success => true, :email => user.email, :token => user.token }
+        else
+          render :json => { :success => false, :message => "The user has not verified their email" }
+        end
       else
         render :json => { :success => false, :message => "Invalid email or password submitted" }
       end
     else
       render :json => { :success => false, :message => "Invalid email or password submitted" }
+    end
+  end
+
+  def verify_email
+    user = User.find(params[:id])
+
+    if user.verification_token == params[:verification_token].to_i
+      user.verified = true
+      user.save
+      render :json => { :success => true, :message => "The user has been successfully verified"}
+    else 
+      render :json => { :success => false, :message => "Invalid verification token" }
     end
   end
 
@@ -108,5 +128,18 @@ class Api::V1::UsersController < Api::V1::BaseController
     if user.token != params[:token]
       render :json => { :success => false, :message => "You do not have access to this data" }
     end
+  end
+
+  def send_verification_email(user)
+    mg_client = Mailgun::Client.new(Settings.mailgun_api_key)
+
+    message_params =  { from: 'Anuraag <anuraag@dchacks.org>',
+                        to:   user.email,
+                        subject: 'The Ruby SDK is awesome!',
+                        text:    "Here is your verification code: #{user.verification_token}"
+                      }
+
+    # Send your message through the client
+    mg_client.send_message 'dchacks.org', message_params
   end
 end

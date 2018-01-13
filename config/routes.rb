@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       resources :users,  :only => [] do
         post 'authenticate', :to => "authenticate", :on => :collection
         post 'register',     :to => "create",       :on => :collection
+        post 'verify_email', :on => :member
 
         get 'feed',      :on => :member
         get 'friends',   :on => :member

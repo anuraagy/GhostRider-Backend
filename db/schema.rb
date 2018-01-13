@@ -94,6 +94,8 @@ ActiveRecord::Schema.define(version: 20180112013016) do
     t.inet "last_sign_in_ip"
     t.string "token", null: false
     t.datetime "token_expiry", null: false
+    t.integer "verification_token", null: false
+    t.boolean "verified", default: false
     t.string "name", null: false
     t.integer "age", null: false
     t.integer "height", null: false

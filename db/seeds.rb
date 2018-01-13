@@ -8,14 +8,16 @@
 
 50.times do |index|
   user_params = {
-    :name           => Faker::Name.unique.name, 
-    :email          => Faker::Internet.unique.email, 
-    :password       => "password",
-    :token          => SecureRandom.base58(24),
-    :token_expiry   => (Time.now + 30.days),
-    :age            => Faker::Number.between(18,50).to_i,
-    :height         => Faker::Number.between(50,82).to_i,
-    :weight         => Faker::Number.between(90,225).to_i
+    :name               => Faker::Name.unique.name, 
+    :email              => Faker::Internet.unique.email, 
+    :password           => "password",
+    :token              => SecureRandom.base58(24),
+    :token_expiry       => (Time.now + 30.days),
+    :verification_token => rand(999999),
+    :verified           => false,
+    :age                => Faker::Number.between(18,50).to_i,
+    :height             => Faker::Number.between(50,82).to_i,
+    :weight             => Faker::Number.between(90,225).to_i
   }
 
   User.create!(user_params)
