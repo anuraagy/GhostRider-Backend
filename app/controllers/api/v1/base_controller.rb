@@ -11,6 +11,8 @@ class Api::V1::BaseController < ApplicationController
       render :json => { :message => "Invalid access token"}
     elsif user.token_expiry < Time.now
       render :json => { :message => "This is an expired token"}
+    elsif !user.verified
+      render :json => { :message => "User has not verified their email"}
     end
   end
 end
