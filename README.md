@@ -10,7 +10,7 @@ uri: 199.168.74.67:3000/api/v1/
 
 ### Auth related routes
 
-Authenticate
+#### Authenticate
 
 
 type: POST
@@ -23,7 +23,7 @@ optional params: none
 
 
 
-Register
+#### Register
 
 type: POST
 
@@ -35,7 +35,7 @@ optional params: none
 
 
 
-Verify Email
+#### Verify Email
 
 
 type: POST
@@ -46,7 +46,7 @@ required params: id (user's id) , verification_token
 
 ### Social Routes
 
-Feed
+#### Feed
 
 
 type: GET
@@ -59,7 +59,7 @@ optional params: none
 
 
 
-Friends
+#### Friends
 
 
 type: GET
@@ -72,7 +72,7 @@ optional params: none
 
 
 
-Followers
+#### Followers
 
 
 type: GET
@@ -85,7 +85,7 @@ optional params: none
 
 
 
-Add Friend
+#### Add Friend
 
 
 type: POST
@@ -98,7 +98,7 @@ optional params: none
 
 
 
-Remove Friend
+#### Remove Friend
 
 
 type: POST
@@ -111,7 +111,7 @@ optional params: none
 
 
 
-Like a post
+#### Like a post
 
 
 type: POST
@@ -124,7 +124,7 @@ optional params: none
 
 
 
-Unlike a post
+#### Unlike a post
 
 type: POST
 
@@ -136,7 +136,7 @@ optional params: none
 
 
 
-Get all posts for a user
+#### Get all posts for a user
 
 type: GET
 
@@ -148,7 +148,7 @@ optional params: none
 
 
 
-Create a post
+#### Create a post
 
 type: POST
 
@@ -161,7 +161,7 @@ optional params: none
 
 
 
-Get all achievements for a user
+#### Get all achievements for a user
 
 type: GET
 
@@ -173,7 +173,7 @@ optional params: none
 
 
 
-Create an achievement for a user
+#### Create an achievement for a user
 
 type: POST
 
@@ -187,7 +187,7 @@ optional params: none
 
 ## Achievements
 
-Get a list of all types of achievements
+#### Get a list of all types of achievements
 
 
 type: GET
@@ -202,7 +202,7 @@ optional params: none
 
 ## Ghosts
 
-Get/Search all ghosts and filter by params
+#### Get/Search all ghosts and filter by params
 
 
 type: GET
@@ -215,7 +215,7 @@ optional params: id, name, distance, data, status, time, calories_burned, user_i
 
 
 
-Fuzzy Text Search Ghosts
+#### Fuzzy Text Search Ghosts
 
 
 type: GET
@@ -228,7 +228,7 @@ optional params: none
 
 
 
-Create a Ghost
+#### Create a Ghost
 
 
 type: POST
@@ -241,7 +241,7 @@ optional params: event_id
 
 
 
-Update a Ghost
+#### Update a Ghost
 
 
 type: PATCH or PUT
@@ -254,7 +254,7 @@ optional params: name, distance, data, status, time, calories_burned, user_id, e
 
 
 
-Destroy a Ghost
+#### Destroy a Ghost
 
 
 type: DELETE
@@ -269,7 +269,7 @@ optional params:none
 
 ## Events
 
-Get/Search all events and filter by params
+#### Get/Search all events and filter by params
 
 
 type: GET
@@ -282,7 +282,7 @@ optional params: id, name, socket, winner, status, creator_id
 
 
 
-Fuzzy Text Search Events
+#### Fuzzy Text Search Events
 
 
 type: GET
@@ -295,7 +295,7 @@ optional params: none
 
 
 
-Create an Event
+#### Create an Event
 
 type: POST
 
@@ -307,7 +307,7 @@ optional params: none
 
 
 
-Update an Event
+#### Update an Event
 
 
 type: PATCH or PUT
@@ -320,7 +320,7 @@ optional params: name, socket, winner, status, creator_id
 
 
 
-Destroy an Event
+#### Destroy an Event
 
 
 type: DELETE
@@ -333,7 +333,7 @@ optional params:none
 
 
 
-Start an Event
+#### Start an Event
 
 
 type: POST
@@ -346,7 +346,7 @@ optional params: none
 
 
       
-End an Event
+#### End an Event
 
 
 type: POST
@@ -359,7 +359,7 @@ optional params: none
 
 
 
-Add a Participant to an Event
+#### Add a Participant to an Event
 
 
 type: POST
@@ -372,7 +372,7 @@ optional params: none
 
 
 
-Add a Participant from an Event
+#### Add a Participant from an Event
 
 
 type: POST
