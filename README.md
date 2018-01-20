@@ -9,7 +9,8 @@ Written in Ruby on Rails
 4. ~~AUTH-2: Shift authentication to more secure format and force users to access stuff based on token, i.e. they can only access their own achievemnts, etc.~~
 5. ~~AUTH-3: Add email verification~~
 6. AUTH-4: Integrate facebook authentication
-7. AUTH-5: Add API to manage people add to event
+7. EVENT-2: Add API to manage people add to event
+8. EVENT-3: Make events public and private 
 
 # API
 
